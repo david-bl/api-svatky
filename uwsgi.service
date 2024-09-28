@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI instance to serve svatky
+After=network.target
+
+[Service]
+User=svatky
+Group=www-data
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/path/to/project
+Environment="PATH=/path/to/project/.venv/bin"
+ExecStart=/path/to/project/.venv/bin/uwsgi --ini /path/to/project/uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target
