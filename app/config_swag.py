@@ -12,7 +12,7 @@ swagger_conf = {
         'title': 'API pro české svátky',
         'version': '1.0.0',
 
-        'description': 'Api poskytuje endpointy pro vyhledávání českých svátků podle různých parametrů. Pro používání není potřeba autentizace.<br>Backend source code [(Github)](https://swagger.io).',
+        'description': 'Api poskytuje endpointy pro vyhledávání českých svátků podle různých parametrů. Pro používání není potřeba autentizace.<br>Backend source code [(Github)](https://github.com/david-bl/api-svatky).',
     },
     "license": {
         "name": "MIT License",
