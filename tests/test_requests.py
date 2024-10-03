@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime
 
 
 # Testing all routes and their status codes
@@ -15,6 +16,17 @@ import pytest
 ))
 def test_all_routes(client, endpoint, status):
     assert client.get(endpoint).status_code == status
+
+
+# Testing /today
+def test_get_all(client):
+    response = client.get('/today')
+    data = response.get_json()
+
+    today = datetime.now()
+
+    assert data['msg'] == 'success'
+    assert today.date() in data['data']
 
 
 # Testing /all

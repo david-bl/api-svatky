@@ -12,7 +12,7 @@ swagger_conf = {
         'title': 'API pro české svátky',
         'version': '1.0.0',
 
-        'description': 'Api poskytuje endpointy pro vyhledávání českých svátků podle různých parametrů. Pro používání není potřeba autentizace.<br>Backend source code [(Github)](https://github.com/david-bl/api-svatky).',
+        'description': 'Api poskytuje endpointy pro vyhledávání českých svátků podle různých parametrů. Pro používání není potřeba autentizace.<br>Source code [(Github)](https://github.com/david-bl/api-svatky).',
     },
     "license": {
         "name": "MIT License",
@@ -86,6 +86,19 @@ swag_route_all = {
     'description': 'Vrací všechny záznamy svátků v aktuálním roce.',
     'operationId': 'getAll',
     'produces': ['application/json'],
+    'tags': ['Svátky'],
+    'responses': {
+        200: {
+            'description': 'OK',
+            'schema': { "$ref": "#/components/schemas/user" }
+        },
+    },
+}
+
+swag_route_today = {
+    'summary': 'Dnešní svátek',
+    'description': 'Vrací záznam pro dnešní den.',
+    'operationId': 'getToday',
     'tags': ['Svátky'],
     'responses': {
         200: {

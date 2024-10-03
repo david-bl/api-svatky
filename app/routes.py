@@ -18,6 +18,13 @@ def all():
     return services.get_all()
 
 
+# Today data
+@app.route('/today', methods=('GET',))
+@swag_from(config_swag.swag_route_today)
+def today():
+    return services.get_today()
+
+
 # Find by name
 @app.route('/name/<string:name>', methods=('GET',))
 @swag_from(config_swag.swag_route_name)

@@ -1,6 +1,7 @@
 from flask import jsonify
 from app.db import get_db
 from app import utils
+from datetime import datetime
 
 
 # Endpoint /name/<arg>
@@ -87,6 +88,21 @@ def get_all():
     FROM "data" ORDER BY "date" ASC'''
 
     data = select_db_data(query)
+    response = res_with_data(data)
+
+    return response
+
+
+# Endpoint /today
+def get_today():
+    query = '''SELECT strftime('%d', "date") as d, 
+    strftime('%m', "date") as m, "date", "name" 
+    FROM "data" WHERE "date" = ? 
+    ORDER BY "date" ASC'''
+
+    today = datetime.now().date()
+
+    data = select_db_data(query, (today,))
     response = res_with_data(data)
 
     return response
