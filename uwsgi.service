@@ -5,6 +5,9 @@ After=network.target
 [Service]
 User=svatky
 Group=www-data
+KillSignal=SIGTERM
+KillMode=mixed
+TimeoutStopSec=5
 Restart=on-failure
 RestartSec=10
 WorkingDirectory=/path/to/project
