@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 # Testing all routes and their status codes
@@ -19,14 +19,25 @@ def test_all_routes(client, endpoint, status):
 
 
 # Testing /today
-def test_get_all(client):
+def test_get_today(client):
     response = client.get('/today')
     data = response.get_json()
 
     today = datetime.now()
 
     assert data['msg'] == 'success'
-    assert today.date() in data['data']
+    assert str(today.date()) in data['data']
+
+
+# Testing /tomorrow
+def test_get_tomorrow(client):
+    response = client.get('/tomorrow')
+    data = response.get_json()
+
+    tomorrow = datetime.now() + timedelta(days=1)
+
+    assert data['msg'] == 'success'
+    assert str(tomorrow.date()) in data['data']
 
 
 # Testing /all

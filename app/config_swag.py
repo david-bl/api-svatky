@@ -108,6 +108,19 @@ swag_route_today = {
     },
 }
 
+swag_route_tomorrow = {
+    'summary': 'Zítřejší svátek',
+    'description': 'Vrací záznam pro zítřejší den.',
+    'operationId': 'getTomorrow',
+    'tags': ['Svátky'],
+    'responses': {
+        200: {
+            'description': 'OK',
+            'schema': { "$ref": "#/components/schemas/user" }
+        },
+    },
+}
+
 swag_route_name = {
     'summary': 'Podle jména',
     'description': 'Vrací záznamy na základě zadaného jména.',

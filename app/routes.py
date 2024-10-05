@@ -25,6 +25,13 @@ def today():
     return services.get_today()
 
 
+# Tomorrow data
+@app.route('/tomorrow', methods=('GET',))
+@swag_from(config_swag.swag_route_tomorrow)
+def tomorrow():
+    return services.get_tomorrow()
+
+
 # Find by name
 @app.route('/name/<string:name>', methods=('GET',))
 @swag_from(config_swag.swag_route_name)

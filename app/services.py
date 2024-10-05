@@ -1,7 +1,7 @@
 from flask import jsonify
 from app.db import get_db
 from app import utils
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 # Endpoint /name/<arg>
@@ -103,6 +103,21 @@ def get_today():
     today = datetime.now().date()
 
     data = select_db_data(query, (today,))
+    response = res_with_data(data)
+
+    return response
+
+
+# Endpoint /tomorrow
+def get_tomorrow():
+    query = '''SELECT strftime('%d', "date") as d, 
+    strftime('%m', "date") as m, "date", "name" 
+    FROM "data" WHERE "date" = ? 
+    ORDER BY "date" ASC'''
+
+    tomorrow = datetime.now().date() + timedelta(days=1)
+
+    data = select_db_data(query, (tomorrow,))
     response = res_with_data(data)
 
     return response
